@@ -9,9 +9,7 @@ LOCAL_VINTF_FRAGMENTS := android.hardware.biometrics.fingerprint@2.1-service.lee
 LOCAL_SRC_FILES := \
     BiometricsFingerprint.cpp \
     service.cpp \
-    fingerprintd/FingerprintDaemonCallbackProxy.cpp \
     fingerprintd/FingerprintDaemonProxy.cpp \
-    fingerprintd/IFingerprintDaemonCallback.cpp \
     fingerprintd/IFingerprintDaemon.cpp \
     fingerprintd/wrapper.cpp
 
@@ -22,7 +20,6 @@ LOCAL_SHARED_LIBRARIES := \
     libhidlbase \
     libhardware \
     libutils \
-    libkeystore_aidl \
     android.hardware.biometrics.fingerprint@2.1
 
 include $(BUILD_EXECUTABLE)
