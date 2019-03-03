@@ -8,10 +8,7 @@ LOCAL_MODULE_RELATIVE_PATH := hw
 LOCAL_VINTF_FRAGMENTS := android.hardware.biometrics.fingerprint@2.1-service.leeco_s2.xml
 LOCAL_SRC_FILES := \
     BiometricsFingerprint.cpp \
-    service.cpp \
-    fingerprintd/FingerprintDaemonProxy.cpp \
-    fingerprintd/IFingerprintDaemon.cpp \
-    fingerprintd/wrapper.cpp
+    service.cpp
 
 LOCAL_SHARED_LIBRARIES := \
     libbinder \
