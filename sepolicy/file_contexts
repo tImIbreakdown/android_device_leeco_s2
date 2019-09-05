@@ -35,6 +35,9 @@
 
 /dev/goodix_fp                                             u:object_r:goodix_device:s0
 
+# Root files
+/firmware(/.*)?                                                            u:object_r:firmware_file:s0
+
 # Perf
 /system/bin/perfservice                                                                   u:object_r:perfservice_exec:s0
 /sys/devices/soc\.0/[a-z0-9]+\.qcom,msmcci-ccimon(/.*)?                                   u:object_r:sysfs_devfreq:s0
