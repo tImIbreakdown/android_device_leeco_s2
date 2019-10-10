@@ -40,15 +40,25 @@
 
 using android::init::property_set;
 
-void property_override(const std::string& name, const std::string& value)
+// copied from build/tools/releasetools/ota_from_target_files.py
+// but with "." at the end and empty entry
+std::vector<std::string> ro_product_props_default_source_order = {
+    "",
+    "product.",
+    "product_services.",
+    "odm.",
+    "vendor.",
+    "system.",
+};
+
+void property_override(const std::string& name, const std::string& value, bool add = true)
 {
     size_t valuelen = value.size();
 
-    prop_info* pi = (prop_info*) __system_property_find(name.c_str());
+    auto pi = (prop_info *) __system_property_find(name.c_str());
     if (pi != nullptr) {
         __system_property_update(pi, value.c_str(), valuelen);
-    }
-    else {
+    } else if (add) {
         int rc = __system_property_add(name.c_str(), name.size(), value.c_str(), valuelen);
         if (rc < 0) {
             LOG(ERROR) << "property_set(\"" << name << "\", \"" << value << "\") failed: "
@@ -57,38 +67,47 @@ void property_override(const std::string& name, const std::string& value)
     }
 }
 
-void property_overrride_triple(const std::string& product_prop, const std::string& system_prop, const std::string& vendor_prop, const std::string& value)
-{
-    property_override(product_prop, value);
-    property_override(system_prop, value);
-    property_override(vendor_prop, value);
-}
-
 void vendor_load_properties()
 {
     LOG(INFO) << "Loading vendor specific properties";
     std::string device = android::base::GetProperty("ro.leeco.devinfo", "");
     LOG(INFO) << "DEVINFO: " << device;
 
+    const auto set_ro_product_prop = [](const std::string &source,
+            const std::string &prop, const std::string &value) {
+        auto prop_name = "ro.product." + source + prop;
+        property_override(prop_name.c_str(), value.c_str(), false);
+    };
+
     if (device == "s2_open") {
         // This is X520
-        property_overrride_triple("ro.product.model", "ro.product.system.model", "ro.product.vendor.model", "X520");
+        for (const auto &source : ro_product_props_default_source_order) {
+            set_ro_product_prop(source, "model", "X520");
+        }
     }
     else if (device == "s2_oversea") {
         // This is X522
-        property_overrride_triple("ro.product.model", "ro.product.system.model", "ro.product.vendor.model", "X522");
+        for (const auto &source : ro_product_props_default_source_order) {
+            set_ro_product_prop(source, "model", "X522");
+        }
     }
     else if (device == "s2_india") {
         // This is X526
-        property_overrride_triple("ro.product.model", "ro.product.system.model", "ro.product.vendor.model", "X526");
+        for (const auto &source : ro_product_props_default_source_order) {
+            set_ro_product_prop(source, "model", "X526");
+        }
     }
     else if (device == "s2_ww") {
         // This is X527
-        property_overrride_triple("ro.product.model", "ro.product.system.model", "ro.product.vendor.model", "X527");
+        for (const auto &source : ro_product_props_default_source_order) {
+            set_ro_product_prop(source, "model", "X527");
+        }
     }
     else {
         // Unknown variant
-        property_overrride_triple("ro.product.model", "ro.product.system.model", "ro.product.vendor.model", "X52X");
+        for (const auto &source : ro_product_props_default_source_order) {
+            set_ro_product_prop(source, "model", "X52X");
+        }
         LOG(ERROR) << "Unable to set DEVINFO from ro.leeco.devinfo prop";
     }
 }
