@@ -337,3 +337,4 @@ etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv_nofem.bin
 # Haxx
 vendor/lib/libstlport_sta.so
 vendor/lib64/libstlport_sta.so
+vendor/lib64/libbase-hax.so|0bdae22ed6c050b13358c91dd332c9ef0c836ae7

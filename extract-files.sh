@@ -83,5 +83,9 @@ patchelf --remove-needed libsoftkeymasterdevice.so "$DEVICE_BLOB_ROOT"/vendor/bi
 patchelf --remove-needed libsoftkeymaster.so "$DEVICE_BLOB_ROOT"/vendor/bin/gx_fpd
 patchelf --remove-needed libkeymaster_messages.so "$DEVICE_BLOB_ROOT"/vendor/bin/gx_fpd
 
+patchelf --replace-needed "libbase.so" "libbase-hax.so" $DEVICE_BLOB_ROOT/vendor/lib/lib-uceservice.so
+patchelf --replace-needed "libbase.so" "libbase-hax.so" $DEVICE_BLOB_ROOT/vendor/lib64/lib-uceservice.so
+patchelf --replace-needed "libbase.so" "libbase-hax.so" $DEVICE_BLOB_ROOT/vendor/bin/imsrcsd
+
 
 "${MY_DIR}/setup-makefiles.sh"
