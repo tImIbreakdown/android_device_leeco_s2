@@ -81,6 +81,7 @@ persist.sys.le_fast_chrg_enable=1
 
 # Fingerprint
 persist.qfp=false
+ro.hardware.fingerprint=goodix
 
 #Fm
 ro.fm.transmitter=false
