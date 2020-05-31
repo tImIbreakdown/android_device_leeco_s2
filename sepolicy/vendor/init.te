@@ -6,5 +6,4 @@ allow init camera_device:file { create_file_perms };
 
 allow init sysfs_ir_enable:file setattr;
 
-allow init vendor_perf_service:service_manager find;
 allow init mnt_vendor_file:dir mounton;

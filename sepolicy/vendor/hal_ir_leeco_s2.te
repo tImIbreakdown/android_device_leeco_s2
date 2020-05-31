@@ -1,5 +1,5 @@
 type hal_ir_leeco_s2, domain, coredomain;
-type hal_ir_leeco_s2_exec, exec_type, file_type;
+type hal_ir_leeco_s2_exec, exec_type, file_type, system_file_type;
 
 hal_server_domain(hal_ir_leeco_s2, hal_ir)
 
