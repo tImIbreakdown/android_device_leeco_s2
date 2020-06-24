@@ -67,6 +67,13 @@ void property_override(const std::string& name, const std::string& value, bool a
     }
 }
 
+void property_override_triple(const std::string& product_prop, const std::string& system_prop, const std::string& vendor_prop, const std::string& value)
+{
+    property_override(product_prop, value, true);
+    property_override(system_prop, value, true);
+    property_override(vendor_prop, value, true);
+}
+
 void vendor_load_properties()
 {
     LOG(INFO) << "Loading vendor specific properties";
@@ -110,4 +117,5 @@ void vendor_load_properties()
         }
         LOG(ERROR) << "Unable to set DEVINFO from ro.leeco.devinfo prop";
     }
+    property_override_triple("ro.product.device", "ro.product.system.device", "ro.product.vendor.device", "le_s2_ww");
 }
