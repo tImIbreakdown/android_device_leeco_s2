@@ -117,5 +117,5 @@ void vendor_load_properties()
         }
         LOG(ERROR) << "Unable to set DEVINFO from ro.leeco.devinfo prop";
     }
-    property_override_triple("ro.product.device", "ro.product.system.device", "ro.product.vendor.device", "le_s2_ww");
+    property_overrride_triple("ro.product.device", "ro.product.system.device", "ro.product.vendor.device", "le_s2_ww");
 }
