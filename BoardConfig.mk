@@ -162,6 +162,9 @@ USE_DEVICE_SPECIFIC_DATA_IPA_CFG_MGR := true
 # Keystore
 TARGET_PROVIDES_KEYMASTER := true
 
+# Legacy memfd
+TARGET_HAS_MEMFD_BACKPORT := true
+
 # Peripheral manager
 TARGET_PER_MGR_ENABLED := true
 
