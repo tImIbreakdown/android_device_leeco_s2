@@ -7,3 +7,6 @@ allow system_server unlabeled:file unlink;
 allow system_server vendor_perf_service:service_manager find;
 
 allow system_server app_zygote:process getpgid;
+
+get_prop(system_server, userspace_reboot_config_prop)
+get_prop(system_server, userspace_reboot_exported_prop)
