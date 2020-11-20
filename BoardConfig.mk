@@ -192,7 +192,6 @@ TARGET_USERIMAGES_USE_F2FS := true
 
 # RIL
 TARGET_USES_OLD_MNC_FORMAT := true
-TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
 
 # Sepolicy
 include device/qcom/sepolicy-legacy/sepolicy.mk
