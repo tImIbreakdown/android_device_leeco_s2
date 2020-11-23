@@ -41,7 +41,6 @@ PRODUCT_PACKAGES += \
     android.hardware.audio.effect@6.0-impl \
     android.hardware.audio.service \
     android.hardware.soundtrigger@2.2-impl \
-    android.hardware.soundtrigger@2.2-service \
     audio_amplifier.msm8952 \
     audio.a2dp.default \
     audio.primary.msm8952 \
@@ -51,7 +50,6 @@ PRODUCT_PACKAGES += \
     libqcompostprocbundle \
     libqcomvisualizer \
     libqcomvoiceprocessing \
-    libvolumelistener \
     libtinycompress
 
 PRODUCT_COPY_FILES += \
@@ -95,8 +93,7 @@ PRODUCT_PACKAGES += \
     camera.msm8952 \
     libqomx_core \
     libmmcamera_interface \
-    libmmjpeg_interface \
-    libmm-qcamera
+    libmmjpeg_interface
 endif
 
 # Charger
@@ -107,17 +104,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/component-overrides.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sysconfig/component-overrides.xml
 
-# Configstore
-PRODUCT_PACKAGES += \
-    android.hardware.ir@1.0-service.leeco_s2 \
-    android.hardware.configstore@1.0-service
-
 # Connectivity Engine support (CNE)
 PRODUCT_PACKAGES += \
     libcnefeatureconfig
 
 # Consumer IR
 PRODUCT_PACKAGES += \
+    android.hardware.ir@1.0-service.leeco_s2 \
     ConsumerirTransmitter
 
 # CryptfsHW
@@ -150,7 +143,6 @@ PRODUCT_PACKAGES += \
     hwcomposer.msm8952 \
     memtrack.msm8952 \
     libdisplayconfig \
-    libgenlock \
     liboverlay \
     libqdMetaData.system \
     libtinyxml
@@ -240,12 +232,6 @@ $(call inherit-product, $(LOCAL_PATH)/data-ipa-cfg-mgr/ipacm_vendor_product.mk)
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_config:$(TARGET_COPY_OUT_VENDOR)/etc/sec_config
 
-# IPv6
-PRODUCT_PACKAGES += \
-    ebtables \
-    ethertypes \
-    libebtc
-
 # IRQ
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/msm_irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance.conf \
@@ -285,18 +271,16 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.system.net.netd@1.0 \
     libandroid_net \
-    netutils-wrapper-1.0 \
+    netutils-wrapper-1.0
 
 # OMX
 PRODUCT_PACKAGES += \
-    android.hardware.media.omx@1.0-impl \
     libc2dcolorconvert \
     libmm-omxcore \
     libOmxAacEnc \
     libOmxAmrEnc \
     libOmxCore \
     libOmxEvrcEnc \
-    libOmxG711Enc \
     libOmxQcelp13Enc \
     libOmxVdec \
     libOmxVenc \
@@ -429,10 +413,6 @@ PRODUCT_PACKAGES += \
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)
 
-# Stlport
-PRODUCT_PACKAGES += \
-    libstlport
-
 # Telephony
 PRODUCT_PACKAGES += \
     ims-ext-common \
@@ -453,8 +433,7 @@ PRODUCT_PACKAGES += \
 # Thermal
 PRODUCT_PACKAGES += \
     android.hardware.thermal@1.0-impl \
-    android.hardware.thermal@1.0-service \
-    thermal.msm8952
+    android.hardware.thermal@1.0-service
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine.conf
@@ -499,7 +478,6 @@ PRODUCT_PACKAGES += \
     libwpa_client \
     hostapd \
     wcnss_service \
-    wifilogd \
     WifiOverlay \
     wpa_supplicant \
     wpa_supplicant.conf
