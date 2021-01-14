@@ -424,8 +424,8 @@ esac
 #
 # Make modem config folder and copy firmware config to that folder for RIL
 #
-if [ -f /data/vendor/radio/ver_info.txt ]; then
-    prev_version_info=`cat /data/vendor/radio/ver_info.txt`
+if [ -f /data/vendor/modem_config/ver_info.txt ]; then
+    prev_version_info=`cat /data/vendor/modem_config/ver_info.txt`
 else
     prev_version_info=""
 fi
