@@ -31,7 +31,7 @@ import /vendor/etc/init/hw/init.s2.usb.rc
 on fs
     wait /dev/block/platform/soc.0/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc.0/${ro.boot.bootdevice} /dev/block/bootdevice
-    mount_all /system/vendor/etc/fstab.qcom --early
+    mount_all /vendor/etc/fstab.qcom
 
     mkdir /persist/data 0700 system system
 
@@ -47,9 +47,6 @@ on late-fs
     start surfaceflinger
     start bootanim
     start vendor.gralloc-2-0
-
-    # mount RW partitions which need run fsck
-    mount_all /system/vendor/etc/fstab.qcom --late
 
 on post-fs-data
     mkdir /persist/data/sfs 0700 system system
@@ -168,13 +165,13 @@ on property:persist.usb.chgdisabled=1
 on property:persist.usb.chgdisabled=0
     write /sys/class/power_supply/battery/charging_enabled 1
 
-service vendor.qseecomd /system/vendor/bin/qseecomd
+service vendor.qseecomd /vendor/bin/qseecomd
    class core
    user root
    group root
    writepid /dev/cpuset/system-background/tasks
 
-service thermal-engine /system/vendor/bin/thermal-engine
+service thermal-engine /vendor/bin/thermal-engine
    class main
    user root
    socket thermal-send-client stream 0666 system system
@@ -184,13 +181,13 @@ service thermal-engine /system/vendor/bin/thermal-engine
    group root
    writepid /dev/cpuset/system-background/tasks
 
-service wcnss-service /system/vendor/bin/wcnss_service
+service wcnss-service /vendor/bin/wcnss_service
     class late_start
     user system
     group system wifi radio
     oneshot
 
-service ppd /system/vendor/bin/mm-pp-daemon
+service ppd /vendor/bin/mm-pp-daemon
     class late_start
     user system
     group system graphics
@@ -226,20 +223,20 @@ on charger
     start qcom-post-boot
     start thermal-engine
 
-service adsprpcd /system/vendor/bin/adsprpcd
+service adsprpcd /vendor/bin/adsprpcd
     class main
     user media
     group media
     writepid /dev/cpuset/system-background/tasks
 
-service vendor.per_mgr /system/vendor/bin/pm-service
+service vendor.per_mgr /vendor/bin/pm-service
     class core
     user system
     group system
     ioprio rt 4
     writepid /dev/cpuset/system-background/tasks
 
-service vendor.per_proxy /system/vendor/bin/pm-proxy
+service vendor.per_proxy /vendor/bin/pm-proxy
     class core
     user system
     group system
@@ -254,7 +251,7 @@ on property:sys.shutdown.requested=*
     stop vendor.ims_rtp_daemon
 
 # CPU energy defaults per frequency
-service vendor.energy-awareness /system/vendor/bin/energy-awareness
+service vendor.energy-awareness /vendor/bin/energy-awareness
     class main
     user root
     group system

@@ -414,7 +414,7 @@ service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
     disabled
     oneshot
 
-service vendor.loc_launcher /system/vendor/bin/loc_launcher
+service vendor.loc_launcher /vendor/bin/loc_launcher
     class late_start
     group gps inet diag wifi
 
@@ -477,14 +477,14 @@ service vendor.charger /vendor/bin/charger
     seclabel u:r:vendor_charger:s0
     writepid /dev/cpuset/system-background/tasks
 
-service vendor.msm_irqbalance /vendor/bin/msm_irqbalance -f /system/vendor/etc/msm_irqbalance.conf
+service vendor.msm_irqbalance /vendor/bin/msm_irqbalance -f /vendor/etc/msm_irqbalance.conf
     class core
     user root
     group root
     disabled
     writepid /dev/cpuset/system-background/tasks
 
-service vendor.msm_irqbal_lb /vendor/bin/msm_irqbalance -f /system/vendor/etc/msm_irqbalance_little_big.conf
+service vendor.msm_irqbal_lb /vendor/bin/msm_irqbalance -f /vendor/etc/msm_irqbalance_little_big.conf
     class core
     user root
     group root

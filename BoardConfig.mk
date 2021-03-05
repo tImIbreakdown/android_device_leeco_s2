@@ -49,6 +49,7 @@ TARGET_BOOTLOADER_BOARD_NAME := MSM8952
 # Kernel
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci earlyprintk
 BOARD_KERNEL_CMDLINE += loop.max_part=7
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --tags_offset 0x00000100
@@ -134,19 +135,28 @@ TARGET_HW_DISK_ENCRYPTION := true
 # Exclude serif fonts for saving system.img size.
 EXCLUDE_SERIF_FONTS := true
 
-# Filesystem
+# Partitions (/proc/partitions * 2 * BLOCK_SIZE (512) = size in bytes)
 BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 67108864
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 4294967296
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 57033596416
 BOARD_CACHEIMAGE_PARTITION_SIZE := 268435456
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_PERSISTIMAGE_PARTITION_SIZE := 33554432
-BOARD_ROOT_EXTRA_FOLDERS := persist
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 67108864
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 4294967296
+BOARD_SYSTEMIMAGE_PARTITION_TYPE := ext4
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 24959753216
+BOARD_VENDORIMAGE_PARTITION_SIZE := 805305344
+BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
+
+TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USERIMAGES_USE_F2FS := true
+
 BOARD_ROOT_EXTRA_SYMLINKS := \
     /vendor/dsp:/dsp \
-    /vendor/firmware_mnt:/firmware
+    /vendor/firmware_mnt:/firmware \
+    /mnt/vendor/persist:/persist
+
+TARGET_USES_MKE2FS := true
 
 # Filesystem Config
 TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
@@ -197,9 +207,6 @@ OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 
 # Recovery
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
-TARGET_USERIMAGES_USE_EXT4 := true
-TARGET_USES_MKE2FS := true
-TARGET_USERIMAGES_USE_F2FS := true
 
 # RIL
 TARGET_USES_OLD_MNC_FORMAT := true
@@ -216,6 +223,13 @@ TARGET_LD_SHIM_LIBS := \
    /system/lib64/hw/gxfingerprint.default.so|fakelogprint.so \
    /system/lib64/hw/fingerprint.vendor.msm8952.so|fakelogprint.so \
    /system/bin/gx_fpd|fakelogprint.so
+
+# Treble
+#BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
+#BOARD_VNDK_VERSION := current
+#PRODUCT_FULL_TREBLE_OVERRIDE := true
+PRODUCT_VENDOR_MOVE_ENABLED := true
+TARGET_COPY_OUT_VENDOR := vendor
 
 # Wifi
 BOARD_HAS_QCOM_WLAN			:= true
