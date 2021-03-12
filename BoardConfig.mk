@@ -192,6 +192,10 @@ TARGET_PER_MGR_ENABLED := true
 TARGET_RPM_SYSTEM_STAT := /d/rpm_stats
 TARGET_USES_INTERACTION_BOOST := true
 
+# Properties
+TARGET_ODM_PROP += $(DEVICE_PATH)/odm.prop
+TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
+
 # Qualcomm support
 BOARD_USES_QCOM_HARDWARE := true
 
@@ -221,8 +225,9 @@ TARGET_LD_SHIM_LIBS := \
    /system/bin/gx_fpd|fakelogprint.so
 
 # Treble
+#BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 #BOARD_VNDK_VERSION := current
-PRODUCT_FULL_TREBLE_OVERRIDE := true
+#PRODUCT_FULL_TREBLE_OVERRIDE := true
 PRODUCT_VENDOR_MOVE_ENABLED := true
 TARGET_COPY_OUT_VENDOR := vendor
 
