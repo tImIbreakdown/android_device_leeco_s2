@@ -93,10 +93,6 @@ on post-fs-data
     chown media media /sys/module/snd_soc_msm8x16/parameters/headset_swap
     chown media media /sys/module/snd_soc_msm8x16/parameters/usb_audio_mode
 
-    # fingerprint
-    chown system system  /dev/goodix_fp
-    chmod 0644 /dev/goodix_fp
-
     chmod 660 /persist/serialno
     chown system system /persist/serialno
 
@@ -214,12 +210,6 @@ on property:init.svc.zygote=running
 
 on property:init.svc.zygote=restarting
     stop ppd
-
-service gx_fpd /vendor/bin/gx_fpd
-    class late_start
-    user system
-    group system
-    seclabel u:r:goodix:s0
 
 on charger
     setprop persist.sys.usb.config mass_storage
