@@ -202,7 +202,7 @@ on boot
 
 on post-fs
     # Wait qseecomd started
-    wait_for_prop sys.listeners.registered true
+    wait_for_prop vendor.sys.listeners.registered true
 
 # msm specific files that need to be created on /data
 on post-fs-data
@@ -430,6 +430,10 @@ service qcom-sh /vendor/bin/init.qcom.sh
     group root system radio
     seclabel u:r:qti_init_shell:s0
     oneshot
+
+on property:vendor.sys.listeners.registered=*
+    setprop sys.keymaster.loaded ${vendor.sys.listeners.registered}
+    setprop vendor.sys.keymaster.loaded ${vendor.sys.listeners.registered}
 
 on property:ro.vendor.ril.mbn_copy_completed=1
     write /data/vendor/radio/copy_complete 1

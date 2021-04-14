@@ -72,6 +72,14 @@ function blob_fixup() {
         patchelf --remove-needed "libkeymaster_messages.so" "${2}"
         ;;
 
+    vendor/lib64/hw/keystore.msm8952.so)
+        sed -i -e 's|keystore.msm8996.so|keystore.msm8952.so|g' "${2}"
+        ;;
+
+    vendor/lib64/hw/gatekeeper.msm8952.so)
+        sed -i -e 's|gatekeeper.msm8996.so|gatekeeper.msm8952.so|g' "${2}"
+        ;;
+
     esac
 }
 

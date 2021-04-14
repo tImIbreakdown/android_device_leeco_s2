@@ -161,41 +161,21 @@ vendor/etc/init/dpmQmiMgr.rc|67569302d3a8828a9118c835e5b69c51b0c8ac68
 vendor/lib64/com.qualcomm.qti.dpm.api@1.0.so|a70cfc1be3e06cde6318d6969e114429fe1950bb
 vendor/lib64/libdpmqmihal.so|25d74c0e867f023b71a7c599ab6d213c7de2725d
 
-# DRM
-vendor/bin/qseecomd
-vendor/lib/libQSEEComAPI.so
-vendor/lib/libGPreqcancel_svc.so
-vendor/lib/libGPreqcancel.so
-vendor/lib64/lib-sec-disp.so
-vendor/lib64/libQSEEComAPI.so
-vendor/lib64/libSecureUILib.so
-vendor/lib64/libStDrvInt.so
-vendor/lib64/libdrmfs.so
-vendor/lib64/libdrmtime.so
-vendor/lib64/libGPreqcancel_svc.so
-vendor/lib64/libGPreqcancel.so
-vendor/lib64/librpmb.so
-vendor/lib64/libsecureui.so
-vendor/lib64/libsecureui_svcsock.so
-vendor/lib64/libssd.so
-
-# DRM - Qualcomm Trusted Execution Enviornment
-lib/vendor.qti.hardware.qteeconnector@1.0.so
-lib64/vendor.qti.hardware.qteeconnector@1.0.so
-vendor/bin/hw/vendor.qti.hardware.qteeconnector@1.0-service
-vendor/etc/init/vendor.qti.hardware.qteeconnector@1.0-service.rc
-vendor/lib/hw/vendor.qti.hardware.qteeconnector@1.0-impl.so
-vendor/lib/vendor.qti.hardware.qteeconnector@1.0_vendor.so
-vendor/lib64/hw/vendor.qti.hardware.qteeconnector@1.0-impl.so
-vendor/lib64/vendor.qti.hardware.qteeconnector@1.0_vendor.so
+# DRM and SEE - from oneplus3t - OnePlus/OnePlus3/OnePlus3T:9/PKQ1.181203.001/1911042108 - OOS 9.0.6
+vendor/bin/qseecomd|9430354d64d97daa75491178a561c04ba0f5dcc9
+vendor/lib64/libQSEEComAPI.so|c2562b6f2b6e9e2a30c72f0638ae0c16365c0022
+vendor/lib64/libdrmfs.so|4aabf209af08449a1867e7a852ce2b48725040e8
+vendor/lib64/libdrmtime.so|110b8a263128288b056183ba064b0ab2f6343fab
+vendor/lib64/librpmb.so|2cca61072c29c2bc82dc71d529fd288c0d796ae8
+vendor/lib64/libssd.so|a3b4f5c81b96966f8d2a1a2f8518522f223e73fb
 
 # DRM (Widevine) - from daisy - daisy_sprout:10/QKQ1.191002.002/V11.0.7.0.QDLMIXM
 vendor/bin/hw/android.hardware.drm@1.2-service.widevine|e130b8f1c8d46d8a185b00cba5ff8a2a871ee94c
 vendor/etc/init/android.hardware.drm@1.2-service.widevine.rc|f206aecdd6843795f6448bb6d44d2244b3e48815
 vendor/lib64/libwvhidl.so|baff35bf3936ccaeaf92621054dbed7fb1287289
 
-# Gatekeeper
-vendor/lib64/hw/gatekeeper.msm8952.so
+# Gatekeeper - from oneplus3t - OnePlus/OnePlus3/OnePlus3T:9/PKQ1.181203.001/1911042108 - OOS 9.0.6
+vendor/lib64/hw/gatekeeper.msm8996.so:vendor/lib64/hw/gatekeeper.msm8952.so|1918f61163d2a58fe824f219f6accc46864a8bf4
 
 # GPS - from daisy - daisy_sprout:10/QKQ1.191002.002/V11.0.17.0.QDLMIXM
 etc/permissions/com.qti.location.sdk.xml|cb68a566bd77dcc75bb7547199d528289fac01cb
@@ -326,8 +306,8 @@ vendor/lib64/libtinyxml2_1.so|56d4d5d0ea010f951de219c7b9fd2c9695a5b9d2
 vendor/lib/hw/vulkan.msm8952.so|45a826c86321a3acb3556fed7988f595354ccb6c
 vendor/lib64/hw/vulkan.msm8952.so|a442c83cc25798de78fa0336358a85c8a7daccc3
 
-# Keystore
-vendor/lib64/hw/keystore.msm8952.so
+# Keystore - from oneplus3t - OnePlus/OnePlus3/OnePlus3T:9/PKQ1.181203.001/1911042108 - OOS 9.0.6
+vendor/lib64/hw/keystore.msm8996.so:vendor/lib64/hw/keystore.msm8952.so|db7dead9dff480a5afd31f5945392b10268566a4
 
 # Listen
 vendor/lib/hw/sound_trigger.primary.msm8952.so
