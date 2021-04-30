@@ -78,6 +78,15 @@ function blob_fixup() {
         "${PATCHELF}" --replace-needed "libprotobuf-cpp-lite.so" "libprotobuf-cpp-lite-v29.so" "${2}"
         ;;
 
+
+    # Load tfa9890 config file from vendor
+    vendor/lib/libtfa9890.so)
+        sed -i "s|/etc/settings/mono_qcom.cnt|/vendor/etc/tfa/mono_qc.cnt|g" "${2}"
+        ;;
+    vendor/lib64/libtfa9890.so)
+        sed -i "s|/etc/settings/mono_qcom.cnt|/vendor/etc/tfa/mono_qc.cnt|g" "${2}"
+        ;;
+
     esac
 }
 

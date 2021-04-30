@@ -8,9 +8,9 @@ system/etc/acdbdata/QRD/msm8976-skun-snd-card/QRD_SKUN_Headset_cal.acdb
 system/etc/acdbdata/QRD/msm8976-skun-snd-card/QRD_SKUN_Speaker_cal.acdb
 
 # Audio libraries
-system/etc/settings/mono_qcom.cnt
--system/lib/libtfa9890.so
--system/lib64/libtfa9890.so|21e05b0401f206c7d197869679e519d273cac5eb
+system/etc/settings/mono_qcom.cnt:vendor/etc/tfa/mono_qc.cnt
+-system/lib/libtfa9890.so:vendor/lib/libtfa9890.so
+-system/lib64/libtfa9890.so:vendor/lib64/libtfa9890.so|6afc401824af2f992273a7ec30a33469b8b694d3
 
 # Camera
 system/bin/mm-qcamera-daemon:vendor/bin/mm-qcamera-daemon|38080d77baf6f4d20c9a967cf39f23479d843c19
