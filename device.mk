@@ -383,11 +383,11 @@ PRODUCT_PACKAGES += \
     fstab.qcom \
     init.proc_touchpanel.sh \
     init.qcom.sh \
-    init.qcom.early_boot.sh \
-    init.qcom.post_boot.sh
+    init.qcom.early_boot.sh
 
 PRODUCT_PACKAGES += \
     init.qcom.rc \
+    init.qcom.power.rc \
     init.recovery.qcom.rc \
     init.target.rc \
     init.s2.usb.rc \

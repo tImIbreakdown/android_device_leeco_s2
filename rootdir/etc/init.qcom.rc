@@ -25,6 +25,7 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
+import /vendor/etc/init/hw/init.qcom.power.rc
 import /vendor/etc/init/hw/init.target.rc
 
 on early-init
@@ -93,23 +94,6 @@ on early-boot
     exec u:r:qti_init_shell:s0 -- /vendor/bin/init.qcom.early_boot.sh
 
 on boot
-    # add a cpuset for the camera daemon
-    # we want all the little cores for camera
-    mkdir /dev/cpuset/camera-daemon
-    write /dev/cpuset/camera-daemon/cpus 0-3
-    write /dev/cpuset/camera-daemon/mems 0
-    chown system system /dev/cpuset/camera-daemon
-    chown system system /dev/cpuset/camera-daemon/tasks
-    chmod 0664 /dev/cpuset/camera-daemon/tasks
-
-    # update foreground cpuset now that processors are up
-    # reserve CPU 3 for the top app and camera daemon
-    write /dev/cpuset/foreground/cpus 0-2,4-5
-    write /dev/cpuset/background/cpus 0
-    write /dev/cpuset/system-background/cpus 0-2
-    write /dev/cpuset/top-app/cpus 0-7
-    write /dev/cpuset/restricted/cpus 0-3
-
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
     chown bluetooth net_bt /sys/class/rfkill/rfkill0/type
     chown bluetooth net_bt /sys/class/rfkill/rfkill0/state
@@ -358,7 +342,6 @@ on post-fs-data
     start vendor.dataadpl
 
 on property:sys.boot_completed=1
-    setprop vendor.post_boot.parsed 1
     write /dev/kmsg "Boot completed "
     #WDSP FW boot sysfs node used by STHAL
     chown media audio /sys/kernel/wdsp0/boot
@@ -412,20 +395,6 @@ service qcom-sh /vendor/bin/init.qcom.sh
 
 on property:ro.vendor.ril.mbn_copy_completed=1
     write /data/vendor/radio/copy_complete 1
-
-service qcom-post-boot /vendor/bin/init.qcom.post_boot.sh
-    class late_start
-    user root
-    group root system wakelock
-    disabled
-    oneshot
-
-on property:sys.boot_completed=1
-    start qcom-post-boot
-    trigger enable-low-power
-
-on property:init.svc.recovery=running
-    trigger enable-low-power
 
 service atfwd /vendor/bin/ATFWD-daemon
     class late_start

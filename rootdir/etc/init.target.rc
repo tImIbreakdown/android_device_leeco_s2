@@ -203,8 +203,6 @@ service gx_fpd /vendor/bin/gx_fpd
     seclabel u:r:goodix:s0
 
 on charger
-    setprop persist.sys.usb.config mass_storage
-    start qcom-post-boot
     start thermal-engine
 
 service adsprpcd /system/vendor/bin/adsprpcd
