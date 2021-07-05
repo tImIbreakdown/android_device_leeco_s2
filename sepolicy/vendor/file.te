@@ -7,3 +7,6 @@ type sysfs_ir_enable, fs_type, sysfs_type;
 
 # Widevine data file
 type mediadrm_vendor_data_file, file_type, data_file_type;
+
+#Define the adpl socket type
+type dataadpl_socket, file_type;

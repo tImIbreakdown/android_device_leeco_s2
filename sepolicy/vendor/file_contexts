@@ -1,3 +1,8 @@
+# ADPL
+/dev/ipa_adpl                                                                               u:object_r:ipa_dev:s0
+/dev/socket/adpl_cmd_uds_file                                                               u:object_r:dataadpl_socket:s0
+/(vendor|system/vendor)/bin/adpl                                                            u:object_r:adpl_exec:s0
+
 # Amplifier
 /dev/i2c_smartpa                                                                            u:object_r:audio_device:s0
 

@@ -3,3 +3,5 @@ serialno                   u:object_r:serialno_prop:s0
 ro.vendor.alarm_boot               u:object_r:vendor_alarm_prop:s0
 
 persist.vendor.service.bdroid.bdaddr       u:object_r:bluetooth_prop:s0
+
+ctl.vendor.dataadpl         u:object_r:vendor_dataadpl_prop:s0
